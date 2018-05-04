@@ -10,7 +10,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <meta name="description" content="">
-    <title>Jiarui&#39;s Blog</title>
+    <title>Linux Command Learning notes · Jiarui&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/qiao.jpg>
     <script>
@@ -186,12 +188,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiarui&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Linux Command Learning notes</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Jiarui's Blog.</a>
 </header>
@@ -205,24 +218,69 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/b1.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Linux Command Learning notes
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/05/03</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -306,42 +364,89 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="lsmod"><a href="#lsmod" class="headerlink" title="lsmod"></a>lsmod</h2><p><code>lsmod</code> 命令在 Linux 中用来显示载入系统的功能模块。</p>
+<p>Linux 操作系统的核心具有模块化的特性，因此在编译核心时，无需把全部的功能都放入核心。这些功能被编译成一个个单独的模块，待需要时再分别载入。</p>
+<p>命令格式</p>
+<pre><code>lsmod
+</code></pre><p>使用示例<br>查看系统已加载的功能模块:</p>
+<pre><code>lsmod
+</code></pre><p>扩展知识<br>lsmod 命令会输出 4 列数据，每列说代表的意思如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第 1 列表示模块的名称。如 scsi_mod 表示 scsi 模块。</span><br><span class="line">第 2 列表示模块的大小。如 130637 表示 scsi_mod 模块的大小为 130637 字节。</span><br><span class="line">第 3 列表示依赖模块的个数。如 6 表示有 6 个模块依赖 scsi_mod 模块。</span><br><span class="line">第 4 列表示依赖模块的内容。如 qla2xxx 表示 Qlogic FC HBA 光纤 HBA 卡模块。</span><br></pre></td></tr></table></figure>
+<p>通过 <code>grep</code> 命令的配合，可以方便的查找系统有没有加载指定模块。如:</p>
+<pre><code>lsmod|grep -i ext3
+</code></pre><p>参考网页<a href="http://linux.zzxworld.com/lsmod.html" target="_blank" rel="noopener">http://linux.zzxworld.com/lsmod.html</a></p>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p><code>grep</code>全称是Global Regular Expression Print，表示全局正则表达式版本</p>
+<p><code>grep</code>可用于shell脚本，因为grep通过返回一个状态值来说明搜索的状态，如果模板搜索成功，则返回0，如果搜索不成功，则返回1，如果搜索的文件不存在，则返回2。我们利用这些返回值就可进行一些自动化的文本处理工作。</p>
+<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><p>vi是Linux终端下或控制台下常用的编辑器，基本的操作方式为：</p>
+<pre><code>vi /路径/文件名
+</code></pre><p>例如：vi /etc/fstab表示显示/etc/fstab文件的内容。使用键盘上的Page Up和Page Down键可以上下翻页；按下Insert键，可以见到窗口左下角有“Insert”字样，表示当前为插入编辑状态，这时从键盘输入的内容将插入到光标位置；再按下Insert键，左下角将有“Replace”字样，表示当前为替换编辑状态，这时从键盘输入的内容将替换光标位置的内容。编辑完内容后，按下Esc键，并输入“:wq”，然后回车就可以保存退出。</p>
+<p>如果不想保存而直接退出，则按下Esc键后，输入“:q!”，然后回车即可。“wq”表示Write和Quit，即保存退出；“q!”表示忽略修改强行退出。</p>
+<h2 id="nano"><a href="#nano" class="headerlink" title="nano"></a>nano</h2><pre><code>nano filename.txt
+</code></pre><p>[Ctrl]-G：取得在线帮助(help)。</p>
+<p>[Ctrl]-X：离开nano软件，若有修改过文件会提示是否需要保存。</p>
+<p>[Ctrl]-O：保存文件，若有权限的话就可以保存文件了。</p>
+<p>[Ctrl]-R：从其他文件读入数据，可以将某个文件的内容贴在本文件中。 </p>
+<p>[Ctrl]-W：查询字符串。[Ctrl]-C：说明目前光标所在处的行数与列数等信息。</p>
+<p>[Ctrl]-_：可以直接输入行号，让光标快速移动到该行。</p>
+<p>[Alt]-Y：校正语法功能开启或关闭(单击开，再单击关)。</p>
+<p>[Alt]-M：可以支持鼠标来移动光标的功能。</p>
+<h2 id="Linux-终止脚本进程"><a href="#Linux-终止脚本进程" class="headerlink" title="Linux 终止脚本进程"></a>Linux 终止脚本进程</h2><p>当<code>ctrl+C</code>没有用时，可以用<code>ps -ef | grep 进程名</code> 查出进程，然后kill该进程。</p>
+<p>kill 的用法：<code>kill［信号代码］进程ID</code></p>
+<p>注：信号代码可以省略；我们常用的信号代码是 -9 ，表示强制终止；</p>
+<p><img src="/2018/05/03/Linux-Learning-notes/kill.png" alt="kill"></p>
+<p>参考网页 <a href="https://blog.csdn.net/LY_Dengle/article/details/53997450" target="_blank" rel="noopener">linux停止正在执行脚本</a></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/05/02/Mapillary-Vistas-Dataset/" title= Mapillary Vistas Dataset >
+                    <div class="prevTitle">Mapillary Vistas Dataset</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "http://yoursite.com/2018/05/03/Linux-Learning-notes/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "Linux Command Learning notes"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://jiaruixu.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/30/Cityscapes-Dataset/" >
-                
-                    <span>Cityscapes Dataset</span>
-            </a>
-            <div class="abstract-content">
-                Cityscapes Dataset该github库包含用于检查，准备和评估Cityscapes数据集的脚本。 该大型数据集包含来自50个不同城市的街道场景中记录的多种立体视频序列，除了20000个弱注释帧以外，还包含5000帧高质量像素级注释。
-详细信息和下载链接请登录：www.cityscapes-dataset.net
-数据库介绍英文网址：https://github.com/mcordts/cityscapesScripts
-以下翻译均来自：https://blog.csdn.net/chishuideyu/article/details/79963072
-数据结构Citysca...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/30</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "cityscape">cityscape</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "dataset">dataset</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -407,6 +512,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lsmod"><span class="toc-number">1.</span> <span class="toc-text">lsmod</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">2.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi"><span class="toc-number">3.</span> <span class="toc-text">vi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nano"><span class="toc-number">4.</span> <span class="toc-text">nano</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-终止脚本进程"><span class="toc-number">5.</span> <span class="toc-text">Linux 终止脚本进程</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -478,7 +601,20 @@
     
     
     
-    <div class="total-archive"> Total : 6 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 7 </div>
     
     <div class="post-archive">
     
@@ -487,6 +623,11 @@
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2018/05/03/Linux-Learning-notes/" >Linux Command Learning notes</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -523,15 +664,19 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="cityscape"><span class="iconfont-archer">&#xe606;</span>cityscape</span>
+        <span class="sidebar-tag-name" data-tags="Cityscapes"><span class="iconfont-archer">&#xe606;</span>Cityscapes</span>
     
-        <span class="sidebar-tag-name" data-tags="dataset"><span class="iconfont-archer">&#xe606;</span>dataset</span>
+        <span class="sidebar-tag-name" data-tags="Dataset"><span class="iconfont-archer">&#xe606;</span>Dataset</span>
     
         <span class="sidebar-tag-name" data-tags="Deeplab v3+"><span class="iconfont-archer">&#xe606;</span>Deeplab v3+</span>
     
-        <span class="sidebar-tag-name" data-tags="Cityscapes"><span class="iconfont-archer">&#xe606;</span>Cityscapes</span>
-    
         <span class="sidebar-tag-name" data-tags="train"><span class="iconfont-archer">&#xe606;</span>train</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="Command"><span class="iconfont-archer">&#xe606;</span>Command</span>
+    
+        <span class="sidebar-tag-name" data-tags="Mapillary Vistas"><span class="iconfont-archer">&#xe606;</span>Mapillary Vistas</span>
     
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
@@ -541,15 +686,9 @@
     
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
-        <span class="sidebar-tag-name" data-tags="Mapillary Vistas"><span class="iconfont-archer">&#xe606;</span>Mapillary Vistas</span>
-    
-        <span class="sidebar-tag-name" data-tags="Dataset"><span class="iconfont-archer">&#xe606;</span>Dataset</span>
-    
         <span class="sidebar-tag-name" data-tags="Tensorflow"><span class="iconfont-archer">&#xe606;</span>Tensorflow</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
-        <span class="sidebar-tag-name" data-tags="Code"><span class="iconfont-archer">&#xe606;</span>Code</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -604,6 +743,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
