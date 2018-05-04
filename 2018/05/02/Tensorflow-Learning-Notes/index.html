@@ -10,7 +10,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <meta name="description" content="">
-    <title>Cityscapes Dataset · Jiarui&#39;s Blog</title>
+    <title>Tensorflow and Python Learning Notes · Jiarui&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -202,7 +202,7 @@
                 <a href="/" >Jiarui&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Cityscapes Dataset</a>
+                <a href="#" class="post-name">Tensorflow and Python Learning Notes</a>
             </div>
     </div>
     
@@ -234,7 +234,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Cityscapes Dataset
+            Tensorflow and Python Learning Notes
             <!-- 404 -->
             
         </h1>
@@ -252,15 +252,17 @@ height:50vh;
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "cityscape">cityscape</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Tensorflow">Tensorflow</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "dataset">dataset</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Python">Python</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Code">Code</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/04/30</span>
+                <span class="post-intro-time">2018/05/02</span>
                 
                 <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                     <span class="iconfont-archer">&#xe602;</span>
@@ -366,151 +368,41 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Cityscapes-Dataset"><a href="#Cityscapes-Dataset" class="headerlink" title="Cityscapes Dataset"></a>Cityscapes Dataset</h2><p>该github库包含用于检查，准备和评估Cityscapes数据集的脚本。 该大型数据集包含来自50个不同城市的街道场景中记录的多种立体视频序列，除了20000个弱注释帧以外，还包含5000帧高质量像素级注释。</p>
-<p>详细信息和下载链接请登录：<a href="www.cityscapes-dataset.net">www.cityscapes-dataset.net</a></p>
-<p>数据库介绍英文网址：<a href="https://github.com/mcordts/cityscapesScripts" target="_blank" rel="noopener">https://github.com/mcordts/cityscapesScripts</a></p>
-<p>以下翻译均来自：<a href="https://blog.csdn.net/chishuideyu/article/details/79963072" target="_blank" rel="noopener">https://blog.csdn.net/chishuideyu/article/details/79963072</a></p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>Cityscapes dataset 的文件夹结构如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;root&#125;/&#123;type&#125;&#123;video&#125;/&#123;split&#125;/&#123;city&#125;/&#123;city&#125;_&#123;seq:0&gt;6&#125;_&#123;frame:0&gt;6&#125;_&#123;type&#125;&#123;ext&#125;</span><br></pre></td></tr></table></figure>
-<p>其中独立元素的含义是:</p>
+        <h2 id="glob-–-Filename-pattern-matching"><a href="#glob-–-Filename-pattern-matching" class="headerlink" title="glob – Filename pattern matching"></a>glob – Filename pattern matching</h2><h3 id="tf-gfile-Glob"><a href="#tf-gfile-Glob" class="headerlink" title="tf.gfile.Glob"></a>tf.gfile.Glob</h3><pre><code>tf.gfile.Glob(filename)
+</code></pre><p>Returns a list of files that match the given pattern(s).</p>
+<p>Args:</p>
 <ul>
-<li><p><code>root Cityscapes</code>数据集的根文件夹。 我们的许多脚本检查指向该文件夹的环境变量“CITYSCAPES_DATASET”是否存在，并将其作为默认目录。</p>
-</li>
-<li><p><code>type</code> 数据类型或形态，比如 <code>gtFine</code> 代表精细的GroundTruth， <code>leftImg8bit</code> 代表左侧相机的八位图像。</p>
-</li>
-<li><p><code>split</code> 分割，即 train， val， test， train_extra或demoVideo。 请注意，并非所有分组都存在所有类型的数据。 因此，偶尔找到空文件夹不要感到惊讶。</p>
-</li>
-<li><p><code>city</code> 这部分数据集的所属城市。</p>
-</li>
-<li><p><code>seq</code> 序列号，使用6位数字。</p>
-</li>
-<li><p><code>frame</code> 帧号，使用6位数字。 请注意，在一些城市中，虽然记录了非常长的序列，但在一些城市记录了许多短序列，其中仅记录了第19帧.</p>
-</li>
-<li><p><code>ext</code> 该文件的扩展名和可选的后缀，例如， <code>_polygons.json</code>为GroundTruth文件</p>
-</li>
+<li>filename: string or iterable of strings. The glob pattern(s).</li>
 </ul>
-<p><code>type</code>可能的值</p>
+<p>Returns:</p>
 <ul>
-<li><p><code>gtFine</code> 精细注释，2975张训练图，500张验证图和1525张测试图。 这种类型的注释用于验证，测试和可选的训练。 注解使用包含单个多边形的“json”文件进行编码。 另外，我们提供<code>png</code>图像，其中像素值对标签进行编码。 有关详细信息，请参阅<code>helpers / labels.py</code>和<code>prepare</code>中的脚本。</p>
-</li>
-<li><p><code>gtCoarse</code> 粗略注释，可用于所有训练和验证图像以及另一组19998张训练图像（<code>train_extra</code>）。 这些注释可以用于训练，也可以与<code>gtFine</code>一起使用，也可以在弱监督的环境中单独使用。</p>
-</li>
-<li><p><code>gtBboxCityPersons</code> 行人边界框注释，可用于所有训练和验证图像。 有关更多详细信息，请参阅<code>helpers / labels_cityPersons.py</code>以及<a href="https://bitbucket.org/shanshanzhang/citypersons" target="_blank" rel="noopener"><code>CityPersons</code>出版物（Zhang等，CVPR’17）</a>。</p>
-</li>
-<li><p><code>leftImg8bit</code> 左侧图像，采用8位LDR格式。这些图像都有标准的注释.</p>
-</li>
-<li><p><code>leftImg16bit</code> 左侧图像，采用16位HDR格式。这些图像提供每像素16位色彩深度并包含更多信息，特别是在场景的非常黑暗或明亮的部分。 警告：图像存储为16位PNG，这是非标准的，并且不是所有库都支持。</p>
-</li>
-<li><p><code>rightImg8bit</code> 右侧图像，采用8位LDR格式。</p>
-</li>
-<li><p><code>rightImg16bit</code> 右侧图像，采用16位HDR格式。</p>
-</li>
-<li><p><code>timestamp</code> 记录时间，单位是<code>ns</code>。 每个序列的第一帧总是有一个0的时间戳。</p>
-</li>
-<li><p><code>disparity</code> 预先计算的视差深度图。 为了获得视差值，对于p&gt; 0的每个像素p计算：<code>d =（float（p）-1）/ 256</code>，而值p = 0是无效测量。 警告：图像存储为16位PNG，这是非标准的，并且不是所有库都支持。</p>
-</li>
-<li><p><code>camera</code> 内部和外部相机校准。</p>
-</li>
-<li><p><code>vehicle</code> 车辆测距，GPS坐标和室外温度。</p>
-</li>
+<li>A list of strings containing filenames that match the given pattern(s).</li>
 </ul>
-<p>随着时间的推移可能会增加更多类型，并且并非所有类型都是最初可用的，如果您需要其他元数据来运行您的方法，请告诉我们。</p>
-<p><code>split</code>可能出现的值</p>
+<p>Reference:</p>
 <ul>
-<li><p><code>train</code> 通常用于训练, 包含 2975 张带有粗糙或精细标注的图像</p>
-</li>
-<li><p><code>val</code> 应该用于验证<code>hyper-parameters</code>，包含500个具有精细和粗糙注释的图像。 也可以用于训练.</p>
-</li>
-<li><p><code>test</code> 用于在我们的评估服务器上测试。 注释不公开，但为方便起见，我们包含自我车辆和整改边界的注释。</p>
-</li>
-<li><p><code>train_extra</code> 可以选择性地用于训练，包含带有粗略注释的19998张图像</p>
-</li>
-<li><p><code>demoVideo</code> 可用于定性评估的视频序列，这些视频不提供注释</p>
-</li>
+<li><a href="https://www.tensorflow.org/api_docs/python/tf/gfile/Glob" target="_blank" rel="noopener">https://www.tensorflow.org/api_docs/python/tf/gfile/Glob</a></li>
 </ul>
-<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>在名为 <code>scripts</code>的文件夹中有数据集包含几个脚本</p>
-<ul>
-<li><p><code>helpers</code> 被其他脚本文件调用的帮助文件</p>
-</li>
-<li><p><code>viewer</code> 用于查看图像和标注的脚本</p>
-</li>
-<li><p><code>preparation</code> 用于将<code>GroundTruth</code>注释转换为适合您的方法的格式的脚本</p>
-</li>
-<li><p><code>evaluation</code> 评价你的方法的脚本</p>
-</li>
-<li><p><code>annotation</code> 被用来标注数据集的标注工具</p>
-</li>
-</ul>
-<p>请注意，所有文件顶部都有一个小型documentation。 非常重要</p>
-<ul>
-<li><p><code>helpers/labels.py</code> 定义所有语义类ID的中心文件，并提供各种类属性之间的映射。</p>
-</li>
-<li><p><code>helpers/labels_cityPersons.py</code> 文件定义所有CityPersons行人类的ID并提供各种类属性之间的映射。</p>
-</li>
-<li><p><code>viewer/cityscapesViewer.py</code> 查看图像并覆盖注释。</p>
-</li>
-<li><p><code>preparation/createTrainIdLabelImgs.py</code> 将多边形格式的注释转换为带有标签ID的png图像，其中像素编码可以在“labels.py”中定义的“训练ID”。</p>
-</li>
-<li><p><code>preparation/createTrainIdInstanceImgs.py</code> 将多边形格式的注释转换为带有实例ID的png图像，其中像素编码由“train ID”组成的实例ID。</p>
-</li>
-<li><p><code>evaluation/evalPixelLevelSemanticLabeling.py</code> 该脚本来评估验证集上的像素级语义标签结果。该脚本还用于评估测试集的结果。</p>
-</li>
-<li><p><code>evaluation/evalInstanceLevelSemanticLabeling.py</code> 该脚本来评估验证集上的实例级语义标签结果。该脚本还用于评估测试集的结果。</p>
-</li>
-<li><p><code>setup.py</code> 运行 <code>setup.py build_ext --inplace</code> 启用<code>cython</code>插件以进行更快速的评估。仅针对<code>Ubuntu</code>进行了测试。</p>
-</li>
-</ul>
-<p>脚本可以通过 pip安装，如下： </p>
-<pre><code>sudo pip install 
-</code></pre><p>这将脚本安装为名为<code>cityscapesscripts</code>的python模块并公开以下工具，请参阅上面的说明：</p>
-<ul>
-<li>csViewer</li>
-<li>csLabelTool</li>
-<li>csEvalPixelLevelSemanticLabeling</li>
-<li>csEvalInstanceLevelSemanticLabeling</li>
-<li>csCreateTrainIdLabelImgs</li>
-<li>csCreateTrainIdInstanceImgs</li>
-</ul>
-<p>请注意，对于您需要安装的图形工具: </p>
-<pre><code>sudo apt install python-tk python-qt4
-</code></pre><h2 id="测评"><a href="#测评" class="headerlink" title="测评"></a>测评</h2><p>一旦你想在测试集上测试你的方法，请在你提供的测试图像上运行你的方法并提交你的结果：</p>
-<p><code>www.cityscapes-dataset.net/submit/</code></p>
-<p>对于语义标注，我们要求结果格式与我们的名为<code>labelIDs</code>的标签图像的格式相匹配。<br>因此，您的代码应该生成图像，其中每个像素的值与<code>labels.py</code>中定义的类ID相对应。<br>请注意，我们的评估脚本包含在脚本文件夹中，可用于在验证集上测试您的方法。<br>有关提交过程的更多详细信息，请咨询我们的网站。</p>
-<h2 id="Dataset-Overview"><a href="#Dataset-Overview" class="headerlink" title="Dataset Overview"></a>Dataset Overview</h2><p>The Cityscapes Dataset focuses on semantic understanding of urban street scenes. In the following, we give an overview on the design choices that were made to target the dataset’s focus.</p>
-<h3 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h3><p>Type of annotations</p>
-<ul>
-<li>Semantic</li>
-<li>Instance-wise</li>
-<li>Dense pixel annotations</li>
-</ul>
-<p>Complexity</p>
-<ul>
-<li>30 classes</li>
-</ul>
-<p>Volume</p>
-<ul>
-<li>5 000 annotated images with fine annotations </li>
-<li>20 000 annotated images with coarse annotations </li>
-</ul>
-<p>Metadata</p>
-<ul>
-<li>Preceding and trailing video frames. Each annotated image is the 20th image from a 30 frame video snippets (1.8s)</li>
-<li>Corresponding right stereo views</li>
-<li>GPS coordinates</li>
-<li>Ego-motion data from vehicle odometry</li>
-<li>Outside temperature from vehicle sensor</li>
-</ul>
-<p>Benchmark suite and evaluation server</p>
-<ul>
-<li>Pixel-level semantic labeling</li>
-<li>Instance-level semantic labeling</li>
-</ul>
-<h3 id="Class-Definitions"><a href="#Class-Definitions" class="headerlink" title="Class Definitions"></a>Class Definitions</h3><p>Please click on the individual classes for details on their definitions.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Group	Classes</span><br><span class="line">flat	road · sidewalk · parking+ · rail track+</span><br><span class="line">human	person* · rider*</span><br><span class="line">vehicle	car* · truck* · bus* · on rails* · motorcycle* · bicycle* · caravan*+ · trailer*+</span><br><span class="line">construction	building · wall · fence · guard rail+ · bridge+ · tunnel+</span><br><span class="line">object	pole · pole group+ · traffic sign · traffic light</span><br><span class="line">nature	vegetation · terrain</span><br><span class="line">sky	sky</span><br><span class="line">void	ground+ · dynamic+ · static+</span><br></pre></td></tr></table></figure>
-<p><code>*</code> Single instance annotations are available. However, if the boundary between such instances cannot be clearly seen, the whole crowd/group is labeled together and annotated as group, e.g. car group.</p>
-<p><code>+</code> This label is not included in any evaluation and treated as void (or in the case of license plate as the vehicle mounted on).</p>
+<h3 id="Example-Data"><a href="#Example-Data" class="headerlink" title="Example Data"></a>Example Data</h3><p>The examples below assume the following test files are present in the current working directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ python glob_maketestdata.py</span><br><span class="line"></span><br><span class="line">dir</span><br><span class="line">dir/file.txt</span><br><span class="line">dir/file1.txt</span><br><span class="line">dir/file2.txt</span><br><span class="line">dir/filea.txt</span><br><span class="line">dir/fileb.txt</span><br><span class="line">dir/subdir</span><br><span class="line">dir/subdir/subfile.txt</span><br></pre></td></tr></table></figure>
+<p>Note Use <code>glob_maketestdata.py</code> in the sample code to create these files if you want to run the examples.</p>
+<h3 id="Wildcards"><a href="#Wildcards" class="headerlink" title="Wildcards"></a>Wildcards</h3><p>An asterisk (<code>*</code>) matches zero or more characters in a segment of a name. For example, <code>dir/*</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line">for name in glob.glob(&apos;dir/*&apos;):</span><br><span class="line">    print name</span><br></pre></td></tr></table></figure>
+<p>The pattern matches every pathname (file or directory) in the directory dir, without recursing further into subdirectories.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python glob_asterisk.py</span><br><span class="line"></span><br><span class="line">dir/file.txt</span><br><span class="line">dir/file1.txt</span><br><span class="line">dir/file2.txt</span><br><span class="line">dir/filea.txt</span><br><span class="line">dir/fileb.txt</span><br><span class="line">dir/subdir</span><br></pre></td></tr></table></figure>
+<p>To list files in a subdirectory, you must include the subdirectory in the pattern:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line"></span><br><span class="line">print &apos;Named explicitly:&apos;</span><br><span class="line">for name in glob.glob(&apos;dir/subdir/*&apos;):</span><br><span class="line">    print &apos;\t&apos;, name</span><br><span class="line"></span><br><span class="line">print &apos;Named with wildcard:&apos;</span><br><span class="line">for name in glob.glob(&apos;dir/*/*&apos;):</span><br><span class="line">    print &apos;\t&apos;, name</span><br></pre></td></tr></table></figure>
+<p>The first case above lists the subdirectory name explicitly, while the second case depends on a wildcard to find the directory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python glob_subdir.py</span><br><span class="line"></span><br><span class="line">Named explicitly:</span><br><span class="line">        dir/subdir/subfile.txt</span><br><span class="line">Named with wildcard:</span><br><span class="line">        dir/subdir/subfile.txt</span><br></pre></td></tr></table></figure>
+<p>The results, in this case, are the same. If there was another subdirectory, the wildcard would match both subdirectories and include the filenames from both.</p>
+<h3 id="Single-Character-Wildcard"><a href="#Single-Character-Wildcard" class="headerlink" title="Single Character Wildcard"></a>Single Character Wildcard</h3><p>The other wildcard character supported is the question mark (<code>?</code>). It matches any single character in that position in the name. For example,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line"></span><br><span class="line">for name in glob.glob(&apos;dir/file?.txt&apos;):</span><br><span class="line">    print name</span><br></pre></td></tr></table></figure>
+<p>Matches all of the filenames which begin with “file”, have one more character of any type, then end with ”<code>.txt</code>”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python glob_question.py</span><br><span class="line"></span><br><span class="line">dir/file1.txt</span><br><span class="line">dir/file2.txt</span><br><span class="line">dir/filea.txt</span><br><span class="line">dir/fileb.txt</span><br></pre></td></tr></table></figure>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a href="https://www.cityscapes-dataset.com/dataset-overview/" target="_blank" rel="noopener">https://www.cityscapes-dataset.com/dataset-overview/</a></li>
+<li><a href="https://pymotw.com/2/glob/" target="_blank" rel="noopener">https://pymotw.com/2/glob/</a></li>
+</ul>
+<h2 id="Tensorflow-slim-TF-Slim"><a href="#Tensorflow-slim-TF-Slim" class="headerlink" title="Tensorflow slim (TF-Slim)"></a>Tensorflow slim (TF-Slim)</h2><ul>
+<li><a href="https://blog.csdn.net/mao_xiao_feng/article/details/73409975" target="_blank" rel="noopener">【Tensorflow】辅助工具篇——tensorflow slim(TF-Slim)介绍</a></li>
 </ul>
 
     </article>
@@ -519,16 +411,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/04/30/Deeplab-v3-training/" title= Deeplab v3+ 在cityscapes数据集上测试笔记 >
-                    <div class="nextTitle">Deeplab v3+ 在cityscapes数据集上测试笔记</div>
+                <a href= "/2018/05/02/Mapillary-Vistas-Dataset/" title= Mapillary Vistas Dataset >
+                    <div class="nextTitle">Mapillary Vistas Dataset</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/04/11/How-do-I-bulid-my-own-blog-with-Hexo-and-Github/" title= How do I build my own blog with Hexo and Github >
-                    <div class="prevTitle">How do I build my own blog with Hexo and Github</div>
+                <a href= "/2018/04/30/Deeplab-v3-training/" title= Deeplab v3+ 在cityscapes数据集上测试笔记 >
+                    <div class="prevTitle">Deeplab v3+ 在cityscapes数据集上测试笔记</div>
                 </a>
             
         </li>
@@ -545,8 +437,8 @@ height:50vh;
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
         
         var disqus_config = function () {
-        this.page.url = "http://yoursite.com/2018/04/30/Cityscapes-Dataset/";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "Cityscapes Dataset"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "http://yoursite.com/2018/05/02/Tensorflow-Learning-Notes/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "Tensorflow and Python Learning Notes"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         
         (function () { // DON'T EDIT BELOW THIS LINE
@@ -648,7 +540,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cityscapes-Dataset"><span class="toc-number">1.</span> <span class="toc-text">Cityscapes Dataset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据结构"><span class="toc-number">2.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本"><span class="toc-number">3.</span> <span class="toc-text">脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测评"><span class="toc-number">4.</span> <span class="toc-text">测评</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dataset-Overview"><span class="toc-number">5.</span> <span class="toc-text">Dataset Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Features"><span class="toc-number">5.1.</span> <span class="toc-text">Features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-Definitions"><span class="toc-number">5.2.</span> <span class="toc-text">Class Definitions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">5.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#glob-–-Filename-pattern-matching"><span class="toc-number">1.</span> <span class="toc-text">glob – Filename pattern matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-gfile-Glob"><span class="toc-number">1.1.</span> <span class="toc-text">tf.gfile.Glob</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-Data"><span class="toc-number">1.2.</span> <span class="toc-text">Example Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wildcards"><span class="toc-number">1.3.</span> <span class="toc-text">Wildcards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Character-Wildcard"><span class="toc-number">1.4.</span> <span class="toc-text">Single Character Wildcard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.5.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-slim-TF-Slim"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow slim (TF-Slim)</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
