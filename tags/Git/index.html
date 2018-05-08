@@ -311,32 +311,37 @@
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/03/Linux-Learning-notes/" >
+            <a class="abstract-title" href = "/2018/05/04/Github-Command-Notes/" >
                 
-                    <span>Linux Command Learning notes</span>
+                    <span>Git Command Notes</span>
             </a>
             <div class="abstract-content">
-                lsmodlsmod 命令在 Linux 中用来显示载入系统的功能模块。
-Linux 操作系统的核心具有模块化的特性，因此在编译核心时，无需把全部的功能都放入核心。这些功能被编译成一个个单独的模块，待需要时再分别载入。
-命令格式
-lsmod
-使用示例查看系统已加载的功能模块:
-lsmod
-扩展知识lsmod 命令会输出 4 列数据，每列说代表的意思如下：
-1234第 1 列表示模块的名称。如 scsi_mod 表示 scsi 模块。第 2 列表示模块的大小。如 130637 表示 scsi_mod 模块的大小为 130637 字节。第 3 列表示依赖模块的个数。如 6 表示有 6 个模块...
+                IntroductionGit 的三种状态Git 有三种状态，你的文件可能处于其中之一：已提交（committed）、已修改（modified）和已暂存（staged）。 
+
+已提交：表示数据已经安全的保存在本地数据库中。 
+
+已修改：表示修改了文件，但还没保存到数据库中。 
+
+已暂存：表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。
+
+
+由此引入 Git 项目的三个工作区域的概念：Git 仓库、工作目录以及暂存区域。
+
+Git 仓库目录是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计算机克隆仓库时，拷贝的就是这里的数据。
+...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/03</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/04</span>
                 </div>
                 <!-- tags  -->
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
     
 </div>
                 
