@@ -404,6 +404,12 @@ height:50vh;
 <h2 id="Tensorflow-slim-TF-Slim"><a href="#Tensorflow-slim-TF-Slim" class="headerlink" title="Tensorflow slim (TF-Slim)"></a>Tensorflow slim (TF-Slim)</h2><ul>
 <li><a href="https://blog.csdn.net/mao_xiao_feng/article/details/73409975" target="_blank" rel="noopener">【Tensorflow】辅助工具篇——tensorflow slim(TF-Slim)介绍</a></li>
 </ul>
+<h2 id="Six-库"><a href="#Six-库" class="headerlink" title="Six 库"></a>Six 库</h2><p><code>six</code>是一个专门用来兼容 Python 2 和 Python 3 的库，用来使得代码同时在 Python 2 和 Python 3 上兼容。只需要在代码前加一句就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import six</span><br></pre></td></tr></table></figure>
+<h2 id="tf-app-flags-FLAGS"><a href="#tf-app-flags-FLAGS" class="headerlink" title="tf.app.flags.FLAGS"></a>tf.app.flags.FLAGS</h2><p><code>tf.app.flags.FLAGS</code> 可用来传递参数，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf  </span><br><span class="line">  </span><br><span class="line">FLAGS = tf.app.flags.FLAGS  </span><br><span class="line">  </span><br><span class="line">tf.app.flags.DEFINE_string(&apos;train_data_path&apos;, &apos;/home/user/data&apos;, &apos;training data dir&apos;)  </span><br><span class="line">tf.app.flags.DEFINE_integer(&apos;max_sentence_len&apos;, 80, &apos;max num of tokens per query&apos;)     </span><br><span class="line">tf.app.flags.DEFINE_float(&apos;learning_rate&apos;, 0.001, &apos;learning rate&apos;)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">flags = tf.app.flags</span><br><span class="line"></span><br><span class="line">FLAGS = flags.FLAGS</span><br><span class="line"></span><br><span class="line">flags.DEFINE_string(&apos;train_logdir&apos;, None, &apos;Where the checkpoint and logs are stored&apos;)</span><br><span class="line">flags.DEFINE_boolean(‘fake_data’, False, ‘If true, uses fake data ‘</span><br><span class="line">‘for unit testing.’)</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- 前后页  -->
@@ -540,7 +546,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#glob-–-Filename-pattern-matching"><span class="toc-number">1.</span> <span class="toc-text">glob – Filename pattern matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-gfile-Glob"><span class="toc-number">1.1.</span> <span class="toc-text">tf.gfile.Glob</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-Data"><span class="toc-number">1.2.</span> <span class="toc-text">Example Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wildcards"><span class="toc-number">1.3.</span> <span class="toc-text">Wildcards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Character-Wildcard"><span class="toc-number">1.4.</span> <span class="toc-text">Single Character Wildcard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.5.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-slim-TF-Slim"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow slim (TF-Slim)</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#glob-–-Filename-pattern-matching"><span class="toc-number">1.</span> <span class="toc-text">glob – Filename pattern matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-gfile-Glob"><span class="toc-number">1.1.</span> <span class="toc-text">tf.gfile.Glob</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-Data"><span class="toc-number">1.2.</span> <span class="toc-text">Example Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wildcards"><span class="toc-number">1.3.</span> <span class="toc-text">Wildcards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Character-Wildcard"><span class="toc-number">1.4.</span> <span class="toc-text">Single Character Wildcard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.5.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-slim-TF-Slim"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow slim (TF-Slim)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Six-库"><span class="toc-number">3.</span> <span class="toc-text">Six 库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-app-flags-FLAGS"><span class="toc-number">4.</span> <span class="toc-text">tf.app.flags.FLAGS</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -659,7 +665,20 @@ top:50vh;
     
     
     
-    <div class="total-archive"> Total : 10 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 11 </div>
     
     <div class="post-archive">
     
@@ -671,12 +690,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2018/05/08/Docker-Command/" >Docker Command</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2018/05/11/Shell-Scripts-Notes/" >Shell Scripts Notes</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2018/05/08/Docker-install/" >Docker install</a>
+            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2018/05/08/Docker-Command/" >Docker Command Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2018/05/08/Docker-install/" >Docker Install</a>
         </li>
     
     
@@ -686,7 +710,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2018/05/03/Linux-Learning-notes/" >Linux Command Learning notes</a>
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2018/05/03/Linux-Learning-notes/" >Linux Command Notes</a>
         </li>
     
     
@@ -749,6 +773,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
         <span class="sidebar-tag-name" data-tags="Mapillary Vistas"><span class="iconfont-archer">&#xe606;</span>Mapillary Vistas</span>
+    
+        <span class="sidebar-tag-name" data-tags="Shell"><span class="iconfont-archer">&#xe606;</span>Shell</span>
     
         <span class="sidebar-tag-name" data-tags="Tensorflow"><span class="iconfont-archer">&#xe606;</span>Tensorflow</span>
     
