@@ -311,6 +311,62 @@
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/07/06/Notes-for-using-Linux/" >
+                
+                    <span>Notes for using Linux</span>
+            </a>
+            <div class="abstract-content">
+                chmod1chmod [options] mode[,mode] file1 [file2 ...]
+Usual implemented options include:
+-R recursive, i.e. include objects in subdirectories
+-f force, forge ahead with all objects even if errors occur
+-v verbose, show objects processed
+123$ ls -halFdrwxr-xr-x 1 root root 204 Jul 6 10:48 ./
+前三个是use...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/06</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/05/15/Training-on-Deeplab-FAQ/" >
+                
+                    <span>Training on Deeplab FAQ</span>
+            </a>
+            <div class="abstract-content">
+                No module named deeplabThis is because you did not add the PYTHONPATH to your ~/.bashrc file. This can be solved by adding the following line in the end of ~/.bashrc file.
+1export PYTHONPATH=$PYTHONPATH: /home/jiarui/models/research/:/home/jiarui/models/research/slim
+Error when running eval.pyErr...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/15</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/05/11/Shell-Scripts-Notes/" >
                 
                     <span>Shell Scripts Notes</span>
@@ -452,14 +508,16 @@ Git 仓库目录是 Git 用来保存项目的元数据和对象数据库的地�
                     <span>Linux Command Notes</span>
             </a>
             <div class="abstract-content">
-                lsmodlsmod 命令在 Linux 中用来显示载入系统的功能模块。
+                pip install1sudo pip install --upgrade --user dist
+Remember to always install with --user only.
+lsmodlsmod 命令在 Linux 中用来显示载入系统的功能模块。
 Linux 操作系统的核心具有模块化的特性，因此在编译核心时，无需把全部的功能都放入核心。这些功能被编译成一个个单独的模块，待需要时再分别载入。
 命令格式
 lsmod
 使用示例查看系统已加载的功能模块:
 lsmod
 扩展知识lsmod 命令会输出 4 列数据，每列说代表的意思如下：
-1234第 1 列表示模块的名称。如 scsi_mod 表示 scsi 模块。第 2 列表示模块的大小。如 130637 表示 scsi_mod 模块的大小为 130637 字节。第 3 列表示依赖模块的个数。如 6 表示有 6 个模块...
+1234第 1 列表示模块的名称。如 scs...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
@@ -470,9 +528,9 @@ lsmod
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
     
 </div>
                 
@@ -582,73 +640,6 @@ DeepLab的准备、训练、测试参考网页[1] Deeplab v3 Github
         <a class="post-tag" href="javascript:void(0);" data-tags = "Deeplab v3+">Deeplab v3+</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "train">train</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/30/Cityscapes-Dataset/" >
-                
-                    <span>Cityscapes Dataset</span>
-            </a>
-            <div class="abstract-content">
-                Cityscapes Dataset该github库包含用于检查，准备和评估Cityscapes数据集的脚本。 该大型数据集包含来自50个不同城市的街道场景中记录的多种立体视频序列，除了20000个弱注释帧以外，还包含5000帧高质量像素级注释。
-详细信息和下载链接请登录：www.cityscapes-dataset.net
-数据库介绍英文网址：https://github.com/mcordts/cityscapesScripts
-以下翻译均来自：https://blog.csdn.net/chishuideyu/article/details/79963072
-数据结构Citysca...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/30</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Cityscapes">Cityscapes</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Dataset">Dataset</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/11/How-do-I-bulid-my-own-blog-with-Hexo-and-Github/" >
-                
-                    <span>How do I build my own blog with Hexo and Github</span>
-            </a>
-            <div class="abstract-content">
-                昨晚熬夜终于搭好了一个属于自己的博客，但是对markdown语法还不是很熟悉，于是决定写一篇搭博客的教程来熟悉一下。前人掉坑，后人绕行。那么，废话不多说，就开始吧！:)
-本文主要是针对 Mac OS 系统上基于 Github 和 Hexo 的博客搭建，Windows 系统上的搭建过程类似，但是会略有不同，可以作为参考。
-Github 和 SSH 设置博客搭建的大概思路就是用 Github 获得免费的域名和空间，然后使用搭建博客的模版 Hexo 来让博客更好看。
-注册 Github首先去 Github 上注册你的username，建议使用常用邮箱，Github上很多通知都是通过邮箱的。比如...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/11</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Hexo">Hexo</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Github">Github</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "blog">blog</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Mac">Mac</a>
     
 </div>
                 
@@ -856,7 +847,33 @@ Github 和 SSH 设置博客搭建的大概思路就是用 Github 获得免费的
     
     
     
-    <div class="total-archive"> Total : 11 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 13 </div>
     
     <div class="post-archive">
     
@@ -865,6 +882,16 @@ Github 和 SSH 设置博客搭建的大概思路就是用 Github 获得免费的
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2018/07/06/Notes-for-using-Linux/" >Notes for using Linux</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/Training-on-Deeplab-FAQ/" >Training on Deeplab FAQ</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -936,10 +963,6 @@ Github 和 SSH 设置博客搭建的大概思路就是用 Github 获得免费的
     
         <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
-        <span class="sidebar-tag-name" data-tags="Command"><span class="iconfont-archer">&#xe606;</span>Command</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
-    
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Github"><span class="iconfont-archer">&#xe606;</span>Github</span>
@@ -950,6 +973,8 @@ Github 和 SSH 设置博客搭建的大概思路就是用 Github 获得免费的
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
+        <span class="sidebar-tag-name" data-tags="Command"><span class="iconfont-archer">&#xe606;</span>Command</span>
+    
         <span class="sidebar-tag-name" data-tags="Mapillary Vistas"><span class="iconfont-archer">&#xe606;</span>Mapillary Vistas</span>
     
         <span class="sidebar-tag-name" data-tags="Shell"><span class="iconfont-archer">&#xe606;</span>Shell</span>
@@ -957,6 +982,8 @@ Github 和 SSH 设置博客搭建的大概思路就是用 Github 获得免费的
         <span class="sidebar-tag-name" data-tags="Tensorflow"><span class="iconfont-archer">&#xe606;</span>Tensorflow</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

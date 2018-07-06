@@ -10,7 +10,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <meta name="description" content="">
-    <title>Jiarui&#39;s Blog</title>
+    <title>Training on Deeplab FAQ · Jiarui&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/qiao.jpg>
     <script>
@@ -186,14 +188,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiarui&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Training on Deeplab FAQ</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Jiarui's Blog.</a>
 </header>
@@ -214,17 +225,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/b2.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/b1.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Jiarui's Blog.
-            <!-- 文章页  -->
+            Training on Deeplab FAQ
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -232,12 +243,36 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Keep looking, don't settle.
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/05/15</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -321,415 +356,69 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/07/06/Notes-for-using-Linux/" >
-                
-                    <span>Notes for using Linux</span>
-            </a>
-            <div class="abstract-content">
-                chmod1chmod [options] mode[,mode] file1 [file2 ...]
-Usual implemented options include:
--R recursive, i.e. include objects in subdirectories
--f force, forge ahead with all objects even if errors occur
--v verbose, show objects processed
-123$ ls -halFdrwxr-xr-x 1 root root 204 Jul 6 10:48 ./
-前三个是use...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/06</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/15/Training-on-Deeplab-FAQ/" >
-                
-                    <span>Training on Deeplab FAQ</span>
-            </a>
-            <div class="abstract-content">
-                No module named deeplabThis is because you did not add the PYTHONPATH to your ~/.bashrc file. This can be solved by adding the following line in the end of ~/.bashrc file.
-1export PYTHONPATH=$PYTHONPATH: /home/jiarui/models/research/:/home/jiarui/models/research/slim
-Error when running eval.pyErr...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/15</span>
-                </div>
-                <!-- tags  -->
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/11/Shell-Scripts-Notes/" >
-                
-                    <span>Shell Scripts Notes</span>
-            </a>
-            <div class="abstract-content">
-                脚本文件开头在每个bash脚本的开头都使用#!，这用来告诉系统此文件的执行需要指定一个解释器。#!实际上是一个 2 字节的魔力数字，这是指定一个文件类型的特殊标记，换句话说, 在这里指是一个可执行的脚本(键入 man magic 来获得关于这个迷人话题的更多详细信息)。在#!之后接着是一个路径名，这个路径名指定了一个解释脚本中命令的程序，这个程序可以是 shell，其它编程语言或任意一个通用程序。这个指定的程序从头开始解释并且执行脚本中的命令(从#!行下边的一行开始)，忽略注释。
-如:
-123456#!/bin/sh#!/bin/bash#!/usr/bin/perl#!/usr/bin...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/11</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Shell">Shell</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/08/Docker-Command/" >
-                
-                    <span>Docker Command Notes</span>
-            </a>
-            <div class="abstract-content">
-                参考网页[1] Docker 入门教程 (全文拷贝自本文）
-[2] 删除本地镜像
-[3] 使用 Dockerfile 定制镜像 (介绍了dockfile的各项内容)
-介绍环境配置的难题软件开发最大的麻烦事之一，就是环境配置。用户计算机的环境都不相同，你怎么知道自家的软件，能在那些机器跑起来？
-用户必须保证两件事：操作系统的设置，各种库和组件的安装。只有它们都正确，软件才能运行。举例来说，安装一个 Python 应用，计算机必须有 Python 引擎，还必须有各种依赖，可能还要配置环境变量。
-如果某些老旧的模块与当前环境不兼容，那就麻烦了。开发者常常会说：”它在我的机器可以跑了”（It w...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Docker">Docker</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/08/Docker-install/" >
-                
-                    <span>Docker Install</span>
-            </a>
-            <div class="abstract-content">
-                参考网页[1] Ubuntu 安装 Docker CE
-[2] 官方文档
-[3] Solving Docker permission denied while trying to connect to the Docker daemon socket
-准备工作系统要求Docker CE 支持以下版本的 Ubuntu 操作系统：
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="No-module-named-deeplab"><a href="#No-module-named-deeplab" class="headerlink" title="No module named deeplab"></a>No module named deeplab</h2><p>This is because you did not add the PYTHONPATH to your <code>~/.bashrc</code> file. This can be solved by adding the following line in the end of <code>~/.bashrc</code> file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH=$PYTHONPATH: /home/jiarui/models/research/:/home/jiarui/models/research/slim</span><br></pre></td></tr></table></figure>
+<h2 id="Error-when-running-eval-py"><a href="#Error-when-running-eval-py" class="headerlink" title="Error when running eval.py"></a>Error when running eval.py</h2><p><strong>Error: assertion failed: [‘predictions’ out of bound]</strong></p>
+<p>This is usually becuase you the image sizes you set or images you read are not correct. Be sure to double check all the settings.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/07/06/Notes-for-using-Linux/" title= Notes for using Linux >
+                    <div class="nextTitle">Notes for using Linux</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/05/11/Shell-Scripts-Notes/" title= Shell Scripts Notes >
+                    <div class="prevTitle">Shell Scripts Notes</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
 
-Artful 17.10 (Docker CE 17.11 Edge +)
-Xenial 16.04 (LTS)
-Trusty 14.04 (LTS)
+<!-- City版安装代码已完成 -->
+    
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "http://yoursite.com/2018/05/15/Training-on-Deeplab-FAQ/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "Training on Deeplab FAQ"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://jiaruixu.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
 
-Docker CE 可以安装在 64 位的 x86 平台或 ARM 平台上。Ubuntu 发行版中，LTS（...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/08</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Docker">Docker</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/04/Github-Command-Notes/" >
-                
-                    <span>Git Command Notes</span>
-            </a>
-            <div class="abstract-content">
-                IntroductionGit 的三种状态Git 有三种状态，你的文件可能处于其中之一：已提交（committed）、已修改（modified）和已暂存（staged）。 
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-已提交：表示数据已经安全的保存在本地数据库中。 
+    
+    <!--PC版-->
 
-已修改：表示修改了文件，但还没保存到数据库中。 
-
-已暂存：表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。
+    <!--PC版-->
 
 
-由此引入 Git 项目的三个工作区域的概念：Git 仓库、工作目录以及暂存区域。
-
-Git 仓库目录是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计算机克隆仓库时，拷贝的就是这里的数据。
-...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/04</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/03/Linux-Learning-notes/" >
-                
-                    <span>Linux Command Notes</span>
-            </a>
-            <div class="abstract-content">
-                pip install1sudo pip install --upgrade --user dist
-Remember to always install with --user only.
-lsmodlsmod 命令在 Linux 中用来显示载入系统的功能模块。
-Linux 操作系统的核心具有模块化的特性，因此在编译核心时，无需把全部的功能都放入核心。这些功能被编译成一个个单独的模块，待需要时再分别载入。
-命令格式
-lsmod
-使用示例查看系统已加载的功能模块:
-lsmod
-扩展知识lsmod 命令会输出 4 列数据，每列说代表的意思如下：
-1234第 1 列表示模块的名称。如 scs...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/03</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/02/Mapillary-Vistas-Dataset/" >
-                
-                    <span>Mapillary Vistas Dataset</span>
-            </a>
-            <div class="abstract-content">
-                Mapillary Vistas Dataset Overview
-25,000 high-resolution images (split into 18,000 for training, 2,000 for validation, 5,000 for testing; at an average resolution of ~9 megapixels) with pixel-wise annotations from &gt;2 million manually drawn polygons
-
-100 object categories, 60 of those instance-...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/02</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Dataset">Dataset</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Mapillary Vistas">Mapillary Vistas</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/02/Tensorflow-Learning-Notes/" >
-                
-                    <span>Tensorflow and Python Learning Notes</span>
-            </a>
-            <div class="abstract-content">
-                glob – Filename pattern matchingtf.gfile.Globtf.gfile.Glob(filename)
-Returns a list of files that match the given pattern(s).
-Args:
-
-filename: string or iterable of strings. The glob pattern(s).
-
-Returns:
-
-A list of strings containing filenames that match the given pattern(s).
-
-Reference:
-
-https:...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/02</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Command">Command</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Tensorflow">Tensorflow</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Python">Python</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/30/Deeplab-v3-training/" >
-                
-                    <span>Deeplab v3+ 在cityscapes数据集上测试笔记</span>
-            </a>
-            <div class="abstract-content">
-                Ubuntu16.04下Cuda安装为了让tensorflow在GPU下运行，需要安装cuda和cudnn。（太懒了，不想写）
-参考网页 Ubuntu 16.04 上安装 CUDA 9.0 详细教程
-DeepLab的准备、训练、测试参考网页[1] Deeplab v3 Github
-[2] 图像语义分割 DeepLab v3+ 训练自己的数据集
-[3] 使用TensorFlow DeepLab进行语义分割
-[4] Github: Running DeepLab on Cityscapes Semantic Segmentation Dataset
-第2、3篇文章都是对voc数据集进行训练...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/30</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Cityscapes">Cityscapes</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Deeplab v3+">Deeplab v3+</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "train">train</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" src= /avatar/qiao.jpg >
-    <div class="profile-name">Jiarui</div>
-    
-    <div class="profile-signature">
-        Keep looking, don&#39;t settle.
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:jiaruixu@umich.edu" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/jiaruixu" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
@@ -793,6 +482,24 @@ DeepLab的准备、训练、测试参考网页[1] Deeplab v3 Github
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#No-module-named-deeplab"><span class="toc-number">1.</span> <span class="toc-text">No module named deeplab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-when-running-eval-py"><span class="toc-number">2.</span> <span class="toc-text">Error when running eval.py</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1114,6 +821,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>

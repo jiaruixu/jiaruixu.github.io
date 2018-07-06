@@ -410,6 +410,38 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf  </span><br><span class="line">  </span><br><span class="line">FLAGS = tf.app.flags.FLAGS  </span><br><span class="line">  </span><br><span class="line">tf.app.flags.DEFINE_string(&apos;train_data_path&apos;, &apos;/home/user/data&apos;, &apos;training data dir&apos;)  </span><br><span class="line">tf.app.flags.DEFINE_integer(&apos;max_sentence_len&apos;, 80, &apos;max num of tokens per query&apos;)     </span><br><span class="line">tf.app.flags.DEFINE_float(&apos;learning_rate&apos;, 0.001, &apos;learning rate&apos;)</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">flags = tf.app.flags</span><br><span class="line"></span><br><span class="line">FLAGS = flags.FLAGS</span><br><span class="line"></span><br><span class="line">flags.DEFINE_string(&apos;train_logdir&apos;, None, &apos;Where the checkpoint and logs are stored&apos;)</span><br><span class="line">flags.DEFINE_boolean(‘fake_data’, False, ‘If true, uses fake data ‘</span><br><span class="line">‘for unit testing.’)</span><br></pre></td></tr></table></figure>
+<h2 id="tf-cast-x-dtype-name-None"><a href="#tf-cast-x-dtype-name-None" class="headerlink" title="tf.cast(x, dtype, name=None)"></a>tf.cast(x, dtype, name=None)</h2><p>此函数是类型转换函数</p>
+<p>参数：</p>
+<ul>
+<li>x：输入</li>
+<li>dtype：转换目标类型</li>
+<li>name：名称</li>
+<li>返回：Tensor</li>
+</ul>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># tensor `a` is [1.8, 2.2], dtype=tf.float  </span><br><span class="line">tf.cast(a, tf.int32) ==&gt; [1, 2]  # dtype=tf.int32</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## tf.squeeze</span><br></pre></td></tr></table></figure>
+<p>tf.squeeze(<br>    input,<br>    axis=None,<br>    name=None,<br>    squeeze_dims=None<br>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">去掉维数为1的维度。 </span><br><span class="line"></span><br><span class="line">例：</span><br></pre></td></tr></table></figure></p>
+<h1 id="‘t’-is-a-tensor-of-shape-1-2-1-3-1-1"><a href="#‘t’-is-a-tensor-of-shape-1-2-1-3-1-1" class="headerlink" title="‘t’ is a tensor of shape [1, 2, 1, 3, 1, 1]"></a>‘t’ is a tensor of shape [1, 2, 1, 3, 1, 1]</h1><p>tf.shape(tf.squeeze(t))  # [2, 3]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">也可以指定去掉哪个维度：</span><br></pre></td></tr></table></figure></p>
+<h1 id="‘t’-is-a-tensor-of-shape-1-2-1-3-1-1-1"><a href="#‘t’-is-a-tensor-of-shape-1-2-1-3-1-1-1" class="headerlink" title="‘t’ is a tensor of shape [1, 2, 1, 3, 1, 1]"></a>‘t’ is a tensor of shape [1, 2, 1, 3, 1, 1]</h1><p>tf.shape(tf.squeeze(t, [2, 4]))  # [1, 2, 3, 1]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## tf.where(a,b,c)</span><br><span class="line"></span><br><span class="line">tf.where(a,b,c)函数： </span><br><span class="line"></span><br><span class="line">功能：</span><br><span class="line"></span><br><span class="line">当a输出结果为true时，tf.where(a,b,c)函数会选择b值输出。 </span><br><span class="line"></span><br><span class="line">当a输出结果为false时，tf.where(a,b,c)函数会选择c值输出。 </span><br><span class="line"></span><br><span class="line">例子：</span><br></pre></td></tr></table></figure></p>
+<p>import tensorflow as tf<br>v1=tf.constant([1.0,2.0,3.0,4.0])<br>v2=tf.constant([4.0,3.0,2.0,1.0])</p>
+<p>with tf.Session() as sess:<br>    init=tf.global_variables_initializer()<br>    sess.run(init)<br>    print(sess.run(tf.greater(v1,v2)))<br>    print(sess.run(tf.where(tf.greater(v1,v2),v1,v2)))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结果：</span><br></pre></td></tr></table></figure></p>
+<p>[False False True True]<br>[ 4. 3. 3. 4.]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**转载自**</span><br><span class="line"></span><br><span class="line">[https://blog.csdn.net/william_hehe/article/details/78636624](https://blog.csdn.net/william_hehe/article/details/78636624)</span><br><span class="line"></span><br><span class="line">## tf.gather</span><br></pre></td></tr></table></figure></p>
+<p>gather(<br>    params,<br>    indices,<br>    validate_indices=None,<br>    name=None<br>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tf.gather(等待被取元素的张量，索引)</span><br><span class="line"></span><br><span class="line">tf.gather根据索引，从输入张量中依次取元素，构成一个新的张量。索引的维度可以小于张量的维度。这时，取张量元素时，会把相应的低维当作一个整体取出来。</span><br><span class="line"></span><br><span class="line">例如</span><br><span class="line"></span><br><span class="line">假设输入张量 [[1,2,3],[4,5,6],[7,8,9]] 是个二维的。如果只给一个一维索引0. 它就把 [1,2,3] 整体取出。如果给两个一维索引，0和1，它就形成 [[1,2,3],[4,5,6]]</span><br><span class="line"></span><br><span class="line">**转载自**</span><br><span class="line"></span><br><span class="line">[https://zhuanlan.zhihu.com/p/34578921](https://zhuanlan.zhihu.com/p/34578921)</span><br><span class="line"></span><br><span class="line">## tf.zeros_like</span><br></pre></td></tr></table></figure></p>
+<p>zeros_like(<br>    tensor,<br>    dtype=None,<br>    name=None,<br>    optimize=True<br>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Creates a tensor with all elements set to zero.</span><br><span class="line"></span><br><span class="line">For example:</span><br></pre></td></tr></table></figure></p>
+<p>tensor = tf.constant([[1, 2, 3], [4, 5, 6]])<br>tf.zeros_like(tensor)  # [[0, 0, 0], [0, 0, 0]]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## tf.reshape</span><br><span class="line">tf.reshape(tensor,shape, name=None) </span><br><span class="line"></span><br><span class="line">函数的作用是将tensor变换为参数shape的形式。</span><br><span class="line"> </span><br><span class="line">其中shape为一个列表形式，特殊的一点是列表中可以存在-1。-1代表的含义是不用我们自己指定这一维的大小，函数会自动计算，但列表中只能存在一个-1。（当然如果存在多个-1，就是一个存在多解的方程了）</span><br></pre></td></tr></table></figure></p>
+<h1 id="x-1-2-3"><a href="#x-1-2-3" class="headerlink" title="x = [[1 2 3]"></a>x = [[1 2 3]</h1><pre><code>[5 6 7]]
+</code></pre><p>x_f = tf.reshape(x,(1,-1)) # x_f = [[1 2 3 5 6 7]]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## tf.tile</span><br></pre></td></tr></table></figure></p>
+<p>tf.tile(<br>    input,<br>    multiples,<br>    name=None<br>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">This operation creates a new tensor by replicating input multiples times. The output tensor&apos;s i&apos;th dimension has `input.dims(i) * multiples[i]` elements, and the values of input are replicated `multiples[i]` times along the &apos;i&apos;th dimension. For example, tiling `[a b c d]` by `[2]` produces `[a b c d a b c d]`.</span><br><span class="line"></span><br><span class="line">## tf.Session</span><br></pre></td></tr></table></figure></p>
+<p>import tensorflow as tf  </p>
+<h1 id="Build-a-graph"><a href="#Build-a-graph" class="headerlink" title="Build a graph."></a>Build a graph.</h1><p>a = tf.constant(5.0)<br>b = tf.constant(6.0)<br>c = a * b  </p>
+<h1 id="Launch-the-graph-in-a-session"><a href="#Launch-the-graph-in-a-session" class="headerlink" title="Launch the graph in a session."></a>Launch the graph in a session.</h1><p>sess = tf.Session()  </p>
+<h1 id="Evaluate-the-tensor-c"><a href="#Evaluate-the-tensor-c" class="headerlink" title="Evaluate the tensor c."></a>Evaluate the tensor <code>c</code>.</h1><p>print(sess.run(c))  </p>
+<p>import tensorflow as tf<br>a = tf.constant(5.0)<br>b = tf.constant(6.0)<br>c = a * b<br>with tf.Session():  </p>
+<h1 id="We-can-also-use-‘c-eval-’-here"><a href="#We-can-also-use-‘c-eval-’-here" class="headerlink" title="We can also use ‘c.eval()’ here."></a>We can also use ‘c.eval()’ here.</h1><p>  print(c.eval())<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## `tf.clip_by_value`</span><br><span class="line">`tf.clip_by_value(A, min, max)`：输入一个张量A，把A中的每一个元素的值都压缩在min和max之间。小于min的让它等于min，大于max的元素的值等于max。</span><br><span class="line"></span><br><span class="line">例如：</span><br></pre></td></tr></table></figure></p>
+<p>[python] view plain copy<br>import tensorflow as tf;<br>import numpy as np;  </p>
+<p>A = np.array([[1,1,2,4], [3,4,8,5]])  </p>
+<p>with tf.Session() as sess:<br>    print sess.run(tf.clip_by_value(A, 2, 5))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输出：</span><br></pre></td></tr></table></figure></p>
+<p>[[2 2 2 4]<br> [3 4 5 5]]<br><code>`</code></p>
 
     </article>
     <!-- 前后页  -->
@@ -546,7 +578,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#glob-–-Filename-pattern-matching"><span class="toc-number">1.</span> <span class="toc-text">glob – Filename pattern matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-gfile-Glob"><span class="toc-number">1.1.</span> <span class="toc-text">tf.gfile.Glob</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-Data"><span class="toc-number">1.2.</span> <span class="toc-text">Example Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wildcards"><span class="toc-number">1.3.</span> <span class="toc-text">Wildcards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Character-Wildcard"><span class="toc-number">1.4.</span> <span class="toc-text">Single Character Wildcard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.5.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-slim-TF-Slim"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow slim (TF-Slim)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Six-库"><span class="toc-number">3.</span> <span class="toc-text">Six 库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-app-flags-FLAGS"><span class="toc-number">4.</span> <span class="toc-text">tf.app.flags.FLAGS</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#glob-–-Filename-pattern-matching"><span class="toc-number">1.</span> <span class="toc-text">glob – Filename pattern matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-gfile-Glob"><span class="toc-number">1.1.</span> <span class="toc-text">tf.gfile.Glob</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-Data"><span class="toc-number">1.2.</span> <span class="toc-text">Example Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wildcards"><span class="toc-number">1.3.</span> <span class="toc-text">Wildcards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Character-Wildcard"><span class="toc-number">1.4.</span> <span class="toc-text">Single Character Wildcard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.5.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-slim-TF-Slim"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow slim (TF-Slim)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Six-库"><span class="toc-number">3.</span> <span class="toc-text">Six 库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-app-flags-FLAGS"><span class="toc-number">4.</span> <span class="toc-text">tf.app.flags.FLAGS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-cast-x-dtype-name-None"><span class="toc-number">5.</span> <span class="toc-text">tf.cast(x, dtype, name=None)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#‘t’-is-a-tensor-of-shape-1-2-1-3-1-1"><span class="toc-number"></span> <span class="toc-text">‘t’ is a tensor of shape [1, 2, 1, 3, 1, 1]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#‘t’-is-a-tensor-of-shape-1-2-1-3-1-1-1"><span class="toc-number"></span> <span class="toc-text">‘t’ is a tensor of shape [1, 2, 1, 3, 1, 1]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-1-2-3"><span class="toc-number"></span> <span class="toc-text">x = [[1 2 3]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Build-a-graph"><span class="toc-number"></span> <span class="toc-text">Build a graph.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Launch-the-graph-in-a-session"><span class="toc-number"></span> <span class="toc-text">Launch the graph in a session.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Evaluate-the-tensor-c"><span class="toc-number"></span> <span class="toc-text">Evaluate the tensor c.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#We-can-also-use-‘c-eval-’-here"><span class="toc-number"></span> <span class="toc-text">We can also use ‘c.eval()’ here.</span></a>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -678,7 +710,33 @@ top:50vh;
     
     
     
-    <div class="total-archive"> Total : 11 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 13 </div>
     
     <div class="post-archive">
     
@@ -687,6 +745,16 @@ top:50vh;
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2018/07/06/Notes-for-using-Linux/" >Notes for using Linux</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/15</span><a class="archive-post-title" href= "/2018/05/15/Training-on-Deeplab-FAQ/" >Training on Deeplab FAQ</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -758,10 +826,6 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
     
-        <span class="sidebar-tag-name" data-tags="Command"><span class="iconfont-archer">&#xe606;</span>Command</span>
-    
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
-    
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Github"><span class="iconfont-archer">&#xe606;</span>Github</span>
@@ -772,6 +836,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
+        <span class="sidebar-tag-name" data-tags="Command"><span class="iconfont-archer">&#xe606;</span>Command</span>
+    
         <span class="sidebar-tag-name" data-tags="Mapillary Vistas"><span class="iconfont-archer">&#xe606;</span>Mapillary Vistas</span>
     
         <span class="sidebar-tag-name" data-tags="Shell"><span class="iconfont-archer">&#xe606;</span>Shell</span>
@@ -779,6 +845,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="Tensorflow"><span class="iconfont-archer">&#xe606;</span>Tensorflow</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
